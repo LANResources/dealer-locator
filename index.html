@@ -84,11 +84,13 @@
         $form.submit(function(e) {
           e.preventDefault();
           
+          window.search_location = null;
           var address = $near_box.val();
           geocoder.geocode({address: address}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               window.app.navigate('', true);
               var location = results[0].geometry.location;
+              window.search_location = location;
               window.app.mapView.center_on(location.lat(), location.lng());
             } else {
               alert("Could not find your location: " + status);
@@ -146,9 +148,9 @@
           </span>
         <% } %>
         
-        <% if (typeof distance != 'undefined') { %>
+        <% if (typeof search_distance != 'undefined') { %>
           <span class="dealer-distance">
-            <strong>Distance:</strong> <%= roundNumber(km2mi(distance), 2) %> miles
+            <strong>Distance:</strong> <%= roundNumber(km2mi(search_distance), 2) %> miles
           </span>
         <% } %>
         

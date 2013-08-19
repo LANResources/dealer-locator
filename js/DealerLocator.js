@@ -53,10 +53,15 @@
       
       this.set({
         latlng: new google.maps.LatLng(lat, lng),
-        distance: null
+        distance: null,
+        search_distance: null
       });
     },
     
+    set_search_distance_from: function(lat, lng) {
+      this.set({ search_distance: this.distance_from(lat, lng) });
+    },
+
     set_distance_from: function(lat, lng) {
       this.set({ distance: this.distance_from(lat, lng) });
     },
@@ -151,6 +156,11 @@
         
         this.filter_cache = this.filtered(function(dealer) {
           dealer.set_distance_from(center.lat(), center.lng());
+          if (window.search_location == null){
+            dealer.set_search_distance_from(center.lat(), center.lng());
+          }else{
+            dealer.set_search_distance_from(window.search_location.lat(), window.search_location.lng());
+          }
           return (dealer.is_in_bounds(bounds) && dealer.is_type(pls));
         });
         
