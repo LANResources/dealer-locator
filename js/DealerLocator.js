@@ -93,7 +93,7 @@
     
     set_photo_url: function(){
       this.set({
-        photo_url: "http://www.biozymebackoffice.com" + this.get('thumb_url')
+        photo_url: this.get('thumb_url')
       });
     },
     
