@@ -84,7 +84,11 @@
     },
     
     marker_icon: function() {
-      return '/images/sure_champ_marker.png';
+      if (this.is_type(['Sunglo'])){
+        return '/images/sunglo_marker.png';
+      }else{
+        return '/images/sure_champ_marker.png';
+      }
     }
   }, DistanceMixin));
   
