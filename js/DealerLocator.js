@@ -132,7 +132,7 @@
       parse: function(response) {
         result = [];
         _.each(response, function(dealer){
-          _.each(_.filter(dealer.addresses, function(address){ return (address.label == 'Primary' || address.show_on_locator == true); }), function(address){
+          _.each(_.filter(dealer.addresses, function(address){ return (address.show_on_locator == true); }), function(address){
             new_dealer = _.clone(dealer);
             new_dealer.id = [new_dealer.id, address.id].join('-');
             new_dealer.address = address.line_1;
