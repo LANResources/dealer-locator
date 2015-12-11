@@ -144,6 +144,12 @@
             new_dealer.fax = address.fax;
             new_dealer.latitude = address.latitude;
             new_dealer.longitude = address.longitude;
+            if (address.label != 'Primary'){
+              if (address.ship_to_name){
+                new_dealer.name = address.ship_to_name;
+              }
+              new_dealer.email = null;
+            }
             result.push(new_dealer);
           });
         });
