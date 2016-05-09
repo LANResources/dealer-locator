@@ -10,15 +10,15 @@
     <title>Biozyme, Inc. Dealer Locator</title>
 
     <link rel="stylesheet" href="style/screen.css" media="screen, projection">
-    
+
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?client=gme-biozyme&v=3.19&libraries=places&sensor=false"></script>
-    
+
     <script src="js/vendor/modernizr-1.6.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="js/vendor/underscore.js"></script>
     <script src="js/vendor/backbone.js"></script>
     <script src="js/DealerLocator.js"></script>
-    
+
     <script type="text/javascript" charset="utf-8">
       function formatPhone(phonenum) {
           var regexObj = /^(?:\+?1[-. ]?)?(?:\(?([0-9]{3})\)?[-. ]?)?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -34,20 +34,20 @@
               return phonenum;
           }
       }
-      
+
       function formatFile (filename) {
         return filename.replace(' ', '-')
       }
-      
+
       function km2mi(km) {
         return km/1.6
       }
-      
+
       function roundNumber(num, dec) {
         var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
         return result;
       }
-      
+
       function gup(name)
       {
         name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
@@ -59,7 +59,7 @@
         else
           return results[1];
       }
-      
+
       $(function() {
         var bounds = new google.maps.LatLngBounds(
           new google.maps.LatLng(21.380577703264454, -127.8059154),
@@ -74,14 +74,14 @@
         $near_box = $('#near'),
         autocomplete = new google.maps.places.Autocomplete($near_box.get(0), places_options),
         geocoder = new google.maps.Geocoder();
-        
+
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
           $form.submit();
         });
-            
+
         $form.submit(function(e) {
           e.preventDefault();
-          
+
           window.search_location = null;
           var address = $near_box.val();
           geocoder.geocode({address: address}, function(results, status) {
@@ -95,7 +95,7 @@
             }
           });
         });
-        
+
         var $filters = $('.filters input');
         $filters.change(function() {
           window.dealers.set_product_lines_filter(
@@ -104,7 +104,7 @@
             })
           );
         });
-        
+
         //autofill from URL
         if(gup('near') != "") {
           var init_search = unescape(String(gup('near')).replace(/\+/g, " "));
@@ -113,78 +113,78 @@
         }
       });
     </script>
-    
+
       <script type="text/template" id="dealer-template">
         <span class="dealer-name"><%= name %></span>
-        
+
         <address class="dealer-address">
           <%= address %><br />
           <%= city %>, <%= state %>
           <%= zipcode %>
         </address>
-        
+
         <% if (phone !== null && phone.length > 0) { %>
           <span class="dealer-phone">
             <strong>Phone:</strong> <%= formatPhone(phone) %>
           </span>
         <% } %>
-        
+
         <% if (email !== null && email.length > 0) { %>
           <strong>Email:</strong>
           <a class="dealer-email" href="mailto:<%= email %>"><%= email %></a>
         <% } %>
-        
+
         <% if (fax !== null && fax.length > 0) { %>
           <span class="dealer-phone dealer-fax">
             <strong>Fax:</strong> <%= formatPhone(fax) %>
           </span>
         <% } %>
-        
+
         <% if (website !== null && website.length > 0) { %>
           <span class="dealer-website">
             <a target="_blank" href="<%= website %>"><%= website %></a>
           </span>
         <% } %>
-        
+
         <% if (typeof search_distance != 'undefined') { %>
           <span class="dealer-distance">
             <strong>Distance:</strong> <%= roundNumber(km2mi(search_distance), 2) %> miles
           </span>
         <% } %>
-        
+
         <ul class='dealer-product-lines'>
           <% for (var i=0; i < dealer_types.length; i++) { %>
             <li><img alt="<%= dealer_types[i] %>" src="/images/<%= formatFile(dealer_types[i]) %>.jpg" /></li>
           <% } %>
         </ul>
       </script>
-      
+
       <script type="text/template" id="asm-template">
         <% if (id != null) { %>
           <p>Area Sales Managers (ASMs) manage and provide support in their defined area. They are a good initial contact to help determine the products that best meet your needs and coordinate with a dealer to ensure they have product on-hand.</p>
           <h4>Your ASM</h4>
         <% } %>
-        
+
         <% if (photo != null && photo.length > 0) { %>
           <img class='asm-picture' src='<%= photo_url %>' />
         <% } %>
         <span class='asm-name'><%= name %></span>
-        
+
         <% if ((city != null && state != null && zipcode != null) && (city.length > 0 && state.length > 0 && zipcode.length > 0)) { %>
           <address class="asm-address">
             <%= city %>, <%= state %>
             <%= zipcode %>
           </address>
         <% } %>
-        
+
         <% if (phone != null && phone.length > 0) { %>
           <span class="asm-phone"><%= formatPhone(phone) %></span>
         <% } %>
-        
+
         <% if (email != null && email.length > 0) { %>
           <a class="asm-email" href="mailto:<%= email %>"><%= email %></a>
         <% } %>
-        
+
       </script>
   </head>
   <body>
@@ -193,7 +193,7 @@
         <form method="get" accept-charset="utf-8" id="search_form">
           <input type="text" name="near" id="near" placeholder="Enter a city, state or ZIP code" class="query-field" />
         </form>
-        
+
         <ul class="filters">
           <li>
             <strong>Product Lines:</strong>
@@ -205,10 +205,10 @@
             <label><input type='checkbox' checked='checked' value='Vita Ferm' /> VitaFerm</label>
           </li>
           <li>
-            <label><input type='checkbox' value='Vita Charge' /> Vita Charge</label>
+            <label><input type='checkbox' checked='checked' value='Vita Charge' /> Vita Charge</label>
           </li>
           <li>
-            <label><input type='checkbox' value='Vitalize' /> Vitalize</label>
+            <label><input type='checkbox' checked='checked' value='Vitalize' /> Vitalize</label>
           </li>
         </ul>
       </div>

@@ -119,7 +119,7 @@
       model: Dealer,
       url: 'http://www.biozymebackoffice.com/dealers.js?callback=?',
 
-      product_lines: ['Sure Champ', 'Vita Ferm'],
+      product_lines: ['Sure Champ', 'Vita Ferm', 'Vita Charge', 'Vitalize'],
       bounds: null,
       filter_cache: null,
 
