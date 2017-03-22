@@ -36,7 +36,7 @@
       }
 
       function formatFile (filename) {
-        return filename.replace(' ', '-')
+        return filename.replace(' ', '-').replace('®','').replace('™','')
       }
 
       function km2mi(km) {
@@ -153,8 +153,8 @@
         <% } %>
 
         <ul class='dealer-product-lines'>
-          <% for (var i=0; i < dealer_types.length; i++) { %>
-            <li><img alt="<%= dealer_types[i] %>" src="/images/<%= formatFile(dealer_types[i]) %>.jpg" /></li>
+          <% for (var i=0; i < product_lines.length; i++) { %>
+            <li><img alt="<%= product_lines[i] %>" src="/images/<%= formatFile(product_lines[i]) %>.jpg" /></li>
           <% } %>
         </ul>
       </script>
@@ -199,16 +199,25 @@
             <strong>Product Lines:</strong>
           </li>
           <li>
-            <label><input type='checkbox' checked='checked' value='Sure Champ' /> Sure Champ</label>
+            <label><input type='checkbox' checked='checked' value='Digest More®' /> Digest More®</label>
           </li>
           <li>
-            <label><input type='checkbox' checked='checked' value='Vita Ferm' /> VitaFerm</label>
+            <label><input type='checkbox' checked='checked' value='DuraFerm™' /> DuraFerm™</label>
           </li>
           <li>
-            <label><input type='checkbox' checked='checked' value='Vita Charge' /> Vita Charge</label>
+            <label><input type='checkbox' checked='checked' value='Gain Smart™' /> Gain Smart™</label>
           </li>
           <li>
-            <label><input type='checkbox' checked='checked' value='Vitalize' /> Vitalize</label>
+            <label><input type='checkbox' checked='checked' value='Sure Champ®' /> Sure Champ®</label>
+          </li>
+          <li>
+            <label><input type='checkbox' checked='checked' value='Vita Charge®' /> Vita Charge®</label>
+          </li>
+          <li>
+            <label><input type='checkbox' checked='checked' value='VitaFerm®' /> VitaFerm®</label>
+          </li>
+          <li>
+            <label><input type='checkbox' checked='checked' value='Vitalize®' /> Vitalize®</label>
           </li>
         </ul>
       </div>
