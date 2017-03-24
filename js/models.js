@@ -11,6 +11,5 @@ window.Dealer = Backbone.Model.extend({
 
 window.Dealers = Backbone.Collection.extend({
     model: Dealer,
-    url: 'http://localhost:3000/dealers.json'
-    // url: 'http://www.biozymebackoffice.com/dealers.json'
+    url: 'http://www.biozymebackoffice.com/dealers.json'
 });
