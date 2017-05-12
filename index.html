@@ -20,18 +20,27 @@
     <script src="js/DealerLocator.js"></script>
 
     <script type="text/javascript" charset="utf-8">
-      function formatPhone(phonenum) {
+      function formatPhone(phoneNum, link = true) {
           var regexObj = /^(?:\+?1[-. ]?)?(?:\(?([0-9]{3})\)?[-. ]?)?([0-9]{3})[-. ]?([0-9]{4})$/;
-          if (regexObj.test(phonenum)) {
-              var parts = phonenum.match(regexObj);
+          if (regexObj.test(phoneNum)) {
+              var parts = phoneNum.match(regexObj);
               var phone = "";
               if (parts[1]) { phone += "(" + parts[1] + ") "; }
               phone += parts[2] + "-" + parts[3];
+
+              if (link){
+                var hasIntlCode = /^\+\d/;
+                if (!hasIntlCode.test(phoneNum)){
+                  phoneNum = "+1" + phoneNum;
+                }
+                phone = '<a href="tel://' + phoneNum + '">' + phone + '</a>';
+              }
+
               return phone;
           }
           else {
               //invalid phone number
-              return phonenum;
+              return phoneNum;
           }
       }
 
@@ -131,12 +140,14 @@
 
         <% if (email !== null && email.length > 0) { %>
           <strong>Email:</strong>
-          <a class="dealer-email" href="mailto:<%= email %>"><%= email %></a>
+          <% for (var i=0; i < email.split(';').length; i++) { %>
+          <a class="dealer-email" href="mailto:<%= email.split(';')[i] %>"><%= email.split(';')[i] %></a>
+          <% } %>
         <% } %>
 
         <% if (fax !== null && fax.length > 0) { %>
           <span class="dealer-phone dealer-fax">
-            <strong>Fax:</strong> <%= formatPhone(fax) %>
+            <strong>Fax:</strong> <%= formatPhone(fax, false) %>
           </span>
         <% } %>
 

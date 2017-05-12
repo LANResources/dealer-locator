@@ -398,8 +398,8 @@
 
     home: function() {
       $('#body').empty()
-        .append(this.resultsView.render().el)
-        .append(this.mapView.render().el);
+        .append(this.mapView.render().el)
+        .append(this.resultsView.render().el);
     },
 
     search: function() {
