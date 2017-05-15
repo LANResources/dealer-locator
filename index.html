@@ -20,7 +20,7 @@
     <script src="js/DealerLocator.js"></script>
 
     <script type="text/javascript" charset="utf-8">
-      function formatPhone(phoneNum, link = true) {
+      function formatPhone(phoneNum, link) {
           var regexObj = /^(?:\+?1[-. ]?)?(?:\(?([0-9]{3})\)?[-. ]?)?([0-9]{3})[-. ]?([0-9]{4})$/;
           if (regexObj.test(phoneNum)) {
               var parts = phoneNum.match(regexObj);
@@ -134,7 +134,7 @@
 
         <% if (phone !== null && phone.length > 0) { %>
           <span class="dealer-phone">
-            <strong>Phone:</strong> <%= formatPhone(phone) %>
+            <strong>Phone:</strong> <%= formatPhone(phone, true) %>
           </span>
         <% } %>
 
@@ -189,7 +189,7 @@
         <% } %>
 
         <% if (phone != null && phone.length > 0) { %>
-          <span class="asm-phone"><%= formatPhone(phone) %></span>
+          <span class="asm-phone"><%= formatPhone(phone, true) %></span>
         <% } %>
 
         <% if (email != null && email.length > 0) { %>
