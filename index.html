@@ -165,9 +165,13 @@
 
         <ul class='dealer-product-lines'>
           <% for (var i=0; i < product_lines.length; i++) { %>
-            <li><img alt="<%= product_lines[i] %>" src="/images/<%= formatFile(product_lines[i]) %>.jpg" /></li>
+            <li><img alt="<%= product_lines[i] %>" title="<%= product_lines[i] %>" src="/images/<%= formatFile(product_lines[i]) %>.jpg" /></li>
           <% } %>
         </ul>
+
+        <% if (master_dealer == true){ %>
+          <image alt="Master Dealer" title="Master Dealer" src="/images/master-dealer-icon-white.png" height="40px"/>
+        <% } %>
       </script>
 
       <script type="text/template" id="asm-template">
