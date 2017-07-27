@@ -85,8 +85,8 @@
     },
 
     marker_icon: function() {
-      if (this.is_type(['Sunglo'])){
-        return '/images/sunglo_marker.png';
+      if (this.get('master_dealer') == true){
+        return '/images/master_dealer_marker.png';
       }else{
         return '/images/sure_champ_marker.png';
       }
