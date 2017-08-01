@@ -290,7 +290,8 @@
     map_options: {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       zoom: 8,
-      maxZoom: 16
+      maxZoom: 16,
+      scrollwheel: false
     },
 
     initialize: function(options) {
