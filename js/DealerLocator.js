@@ -419,11 +419,21 @@
     window.current_user.fetch({
       success: function(resp, status, xhr) {
         window.app.navigate('', true);
-        window.app.mapView.center_on(window.current_user.get('latitude'), window.current_user.get('longitude'))
+        if ($('input#near').val().length == 0){
+          window.app.mapView.center_on(window.current_user.get('latitude'), window.current_user.get('longitude'));
+        }
       },
 
       error: function() {
         window.app.navigate('', true);
       }
     });
+
+    if ("geolocation" in window.navigator){
+      window.navigator.geolocation.getCurrentPosition(function(position){
+        if ($('input#near').val().length == 0){
+          window.app.mapView.center_on(position.coords.latitude, position.coords.longitude);
+        }
+      });
+    }
   });
