@@ -140,8 +140,12 @@
 
         <% if (email !== null && email.length > 0) { %>
           <strong>Email:</strong>
-          <% for (var i=0; i < email.split(';').length; i++) { %>
-          <a class="dealer-email" href="mailto:<%= email.split(';')[i] %>"><%= email.split(';')[i] %></a>
+          <% if (email.length > 1){ %>
+            <% for (var i=0; i < email.length; i++) { %>
+              <div class="dealer-email">- <a href="mailto:<%= email[i].trim() %>"><%= email[i].trim() %></a></div>
+            <% } %>
+          <% } else { %>
+            <a class="dealer-email-inline" href="mailto:<%= email[0].trim() %>"><%= email[0].trim() %></a>
           <% } %>
         <% } %>
 
@@ -153,7 +157,7 @@
 
         <% if (website !== null && website.length > 0) { %>
           <span class="dealer-website">
-            <a target="_blank" href="<%= website %>"><%= website %></a>
+            <a target="_blank" href="<%= website %>" title="<%= website %>">Visit Website</a>
           </span>
         <% } %>
 

@@ -151,6 +151,10 @@
               }
               new_dealer.email = null;
             }
+            if (address.email != null){
+              new_dealer.email = address.email
+            }
+            new_dealer.email = (new_dealer.email || "").split(';');
             result.push(new_dealer);
           });
         });
