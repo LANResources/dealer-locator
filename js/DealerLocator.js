@@ -87,6 +87,9 @@
     marker_icon: function() {
       if (this.get('master_dealer') == true){
         return '/images/master_dealer_marker.png';
+      }else if (this.get('contact_type') == 'Dealer SPA'){
+        return '/images/dealer_spa_marker.png';
+      }
       }else{
         return '/images/sure_champ_marker.png';
       }
