@@ -69,6 +69,50 @@
           return results[1];
       }
 
+      function getUrlParameter(name){
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      };
+
+      function setProductFilters(filters){
+        $('.filters input').each(function(){
+          if (filters.indexOf($(this).val()) >= 0){
+            $(this).prop('checked', true);
+          } else {
+            $(this).removeProp('checked');
+          }
+        });
+      }
+
+      function applyDefaultProductFilters(){
+        var defaultFilters = [];
+        _.each(getUrlParameter('brands').split('|'), function(brand){
+          switch (brand.toUpperCase()){
+            case 'DF':
+              defaultFilters.push('DuraFerm®');
+              break;
+            case 'SC':
+              defaultFilters.push('Sure Champ®');
+              break;
+            case 'VC':
+              defaultFilters.push('Vita Charge®');
+              break;
+            case 'VF':
+              defaultFilters.push('VitaFerm®');
+              break;
+            case 'VZ':
+              defaultFilters.push('Vitalize®');
+              break;
+          }
+        });
+        if (defaultFilters.length == 0){
+          defaultFilters = ['DuraFerm®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'];
+        }
+        setProductFilters(defaultFilters);
+      }
+
       $(function() {
         var bounds = new google.maps.LatLngBounds(
           new google.maps.LatLng(21.380577703264454, -127.8059154),
@@ -105,6 +149,8 @@
           });
         });
 
+        applyDefaultProductFilters();
+
         var $filters = $('.filters input');
         $filters.change(function() {
           window.dealers.set_product_lines_filter(
@@ -113,6 +159,7 @@
             })
           );
         });
+        $filters.change();
 
         //autofill from URL
         if(gup('near') != "") {
