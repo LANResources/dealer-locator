@@ -96,7 +96,7 @@
   }, DistanceMixin));
 
   var Asm = Backbone.Model.extend({
-    url: 'http://www.biozymebackoffice.com/asms.js?callback=?',
+    url: 'https://www.biozymebackoffice.com/asms.js?callback=?',
 
     set_photo_url: function(){
       this.set({
@@ -120,7 +120,7 @@
 ////////////////////////////////////////
   var Dealers = Backbone.Collection.extend(_.extend({
       model: Dealer,
-      url: 'http://www.biozymebackoffice.com/dealers.js?callback=?',
+      url: 'https://www.biozymebackoffice.com/dealers.js?callback=?',
 
       product_lines: ['DuraFerm®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'],
       bounds: null,
