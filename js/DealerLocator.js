@@ -37,7 +37,7 @@
 // Models
 ////////////////////////////////////////
   var User = Backbone.Model.extend({
-    url: 'http://freegeoip.net/json/?callback=?',
+    url: 'https://api.ipstack.com/check?access_key=' + window.ipstackKey + '&callback=?',
 
     current_location: function() {
       return new google.maps.LatLng(this.get('latitude'), this.get('longitude'));
@@ -96,7 +96,7 @@
   }, DistanceMixin));
 
   var Asm = Backbone.Model.extend({
-    url: 'https://www.biozymebackoffice.com/asms.js?callback=?',
+    url: 'https://biozymebackoffice.com/asms.js?callback=?',
 
     set_photo_url: function(){
       this.set({
@@ -120,7 +120,7 @@
 ////////////////////////////////////////
   var Dealers = Backbone.Collection.extend(_.extend({
       model: Dealer,
-      url: 'https://www.biozymebackoffice.com/dealers.js?callback=?',
+      url: 'https://biozymebackoffice.com/dealers.js?callback=?',
 
       product_lines: ['DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'],
       bounds: null,
@@ -414,14 +414,7 @@
     }
   });
 
-// Bootstraping
-////////////////////////////////////////
-  $(document).ready(function() {
-    window.app = new DealerLocator();
-    Backbone.history.start();
-
-    window.dealers.fetch();
-
+  function setCurrentUser(){
     window.current_user.fetch({
       success: function(resp, status, xhr) {
         window.app.navigate('', true);
@@ -434,12 +427,23 @@
         window.app.navigate('', true);
       }
     });
+  }
+
+// Bootstraping
+////////////////////////////////////////
+  $(document).ready(function() {
+    window.app = new DealerLocator();
+    Backbone.history.start();
+
+    window.dealers.fetch();
 
     if ("geolocation" in window.navigator){
       window.navigator.geolocation.getCurrentPosition(function(position){
         if ($('input#near').val().length == 0){
           window.app.mapView.center_on(position.coords.latitude, position.coords.longitude);
         }
-      });
+      }, setCurrentUser);
+    }else{
+      setCurrentUser();
     }
   });
