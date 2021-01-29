@@ -91,6 +91,9 @@
         var defaultFilters = [];
         _.each(getUrlParameter('brands').split('|'), function(brand){
           switch (brand.toUpperCase()){
+            case 'BB':
+              defaultFilters.push('Backyard Boost™');
+              break;
             case 'DF':
               defaultFilters.push('DuraFerm®');
               break;
@@ -112,7 +115,7 @@
           }
         });
         if (defaultFilters.length == 0){
-          defaultFilters = ['DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'];
+          defaultFilters = ['Backyard Boost™', 'DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'];
         }
         setProductFilters(defaultFilters);
       }
@@ -220,7 +223,7 @@
 
         <ul class='dealer-product-lines'>
           <% for (var i=0; i < product_lines.length; i++) { %>
-            <li><img alt="<%= product_lines[i] %>" title="<%= product_lines[i] %>" src="/images/<%= formatFile(product_lines[i]) %>.jpg" /></li>
+            <li><img alt="<%= product_lines[i] %>" title="<%= product_lines[i] %>" height="28px" width="45px" src="/images/<%= formatFile(product_lines[i]) %>.jpg" /></li>
           <% } %>
         </ul>
 
@@ -270,6 +273,9 @@
         <ul class="filters">
           <li>
             <strong>Product Lines:</strong>
+          </li>
+          <li>
+            <label><input type='checkbox' checked='checked' value='Backyard Boost™' /> Backyard Boost™</label>
           </li>
           <li>
             <label><input type='checkbox' checked='checked' value='DuraFerm®' /> DuraFerm®</label>
