@@ -278,7 +278,7 @@
           $dealers.append(view.render().el);
         });
       } else {
-        $dealers.append('<li class="dealer">There is no dealer in the selected area.  Please try zooming the map out.  You can also call our inside sales team at 800-821-3070 or purchase products online by following <a href="https://www.biozymeproducts.com">this link</a></li>');
+        $dealers.append('<li class="dealer">There is no dealer in the selected area.  Please try zooming the map out.  You can also call our inside sales team at 800-821-3070 or purchase products online by following <a href="https://www.biozymeproducts.com" target="_blank">this link</a></li>');
       }
     },
 
