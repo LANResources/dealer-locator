@@ -92,7 +92,7 @@
         _.each(getUrlParameter('brands').split('|'), function(brand){
           switch (brand.toUpperCase()){
             case 'BB':
-              defaultFilters.push('Backyard Boost™');
+              defaultFilters.push('Backyard Boost®');
               break;
             case 'DF':
               defaultFilters.push('DuraFerm®');
@@ -115,7 +115,7 @@
           }
         });
         if (defaultFilters.length == 0){
-          defaultFilters = ['Backyard Boost™', 'DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'];
+          defaultFilters = ['Backyard Boost®', 'DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'];
         }
         setProductFilters(defaultFilters);
       }
@@ -275,7 +275,7 @@
             <strong>Product Lines:</strong>
           </li>
           <li>
-            <label><input type='checkbox' checked='checked' value='Backyard Boost™' /> Backyard Boost™</label>
+            <label><input type='checkbox' checked='checked' value='Backyard Boost®' /> Backyard Boost®</label>
           </li>
           <li>
             <label><input type='checkbox' checked='checked' value='DuraFerm®' /> DuraFerm®</label>
