@@ -87,10 +87,8 @@
     marker_icon: function() {
       if (this.get('master_dealer') == true){
         return '/images/master_dealer_marker.png';
-      }else if (this.get('contact_type') == 'Dealer SPA'){
-        return '/images/dealer_spa_marker.png';
       }else{
-        return '/images/sure_champ_marker.png';
+        return '/images/dealer_marker.png';
       }
     }
   }, DistanceMixin));
@@ -329,6 +327,8 @@
         google.maps.event.trigger(map, 'idle');
       });
 
+      this.create_legend();
+
       return this;
     },
 
@@ -377,6 +377,11 @@
       var new_center = new google.maps.LatLng(lat, lng);
       this.map.setCenter(new_center);
       this.map.setZoom(10);
+    },
+
+    create_legend: function() {
+      var legend = document.getElementById('locator-legend');
+      this.map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
     }
   });
 

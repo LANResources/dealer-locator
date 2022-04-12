@@ -110,6 +110,33 @@ body {
 .map .dealer-distance {
   display: none;
 }
+#locator-legend {
+  background: #fff;
+  padding: 10px;
+  margin: 0;
+  border-top: 1px solid #da5f2f;
+  border-right: 1px solid #da5f2f;
+  border-bottom: 1px solid #da5f2f;
+}
+#locator-legend h4 {
+  margin-top: 0;
+}
+#locator-legend img {
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+}
+#locator-legend .legend-entry {
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+#locator-legend #legend-note {
+  font-style: italic;
+  margin-top: 5px;
+  margin-bottom: 0;
+  color: gray;
+}
 
 @media (max-width: 767px){
   .dealers {
