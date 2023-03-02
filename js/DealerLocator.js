@@ -452,6 +452,3 @@
       setCurrentUser();
     }
   });
-
-// Callback for Google Maps API script
-window.noop = () => { }
