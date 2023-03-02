@@ -132,10 +132,9 @@ body {
   vertical-align: middle;
 }
 #locator-legend #legend-note {
-  font-style: italic;
   margin-top: 5px;
   margin-bottom: 0;
-  color: gray;
+  font-weight: bold;
 }
 
 @media (max-width: 767px){

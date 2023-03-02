@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="style/screen.css" media="screen, projection">
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?client=gme-biozyme&v=3&libraries=places"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?client=gme-biozyme&v=3&libraries=places&callback=$.noop"></script>
 
     <script src="js/vendor/modernizr-1.6.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
@@ -221,12 +221,6 @@
           </span>
         <% } %>
 
-        <ul class='dealer-product-lines'>
-          <% for (var i=0; i < product_lines.length; i++) { %>
-            <li><img alt="<%= product_lines[i] %>" title="<%= product_lines[i] %>" height="28px" width="45px" src="/images/<%= formatFile(product_lines[i]) %>.jpg" /></li>
-          <% } %>
-        </ul>
-
         <% if (master_dealer == true){ %>
           <div class="master-dealer-row">
             <image alt="Master Dealer" title="Master Dealer" src="/images/master-dealer-icon-white.png" height="40px" class="master-dealer-icon" />
@@ -308,7 +302,7 @@
           <img src="/images/dealer_marker.png" /> BioZyme® Dealer
         </div>
         <p id="legend-note">
-          <small>Please contact individual dealers for current product offerings and available inventory</small>
+          <strong>Please contact individual dealers for current product offerings and available inventory</strong>
         </p>
       </div>
     </span>
