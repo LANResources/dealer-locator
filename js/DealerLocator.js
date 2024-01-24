@@ -55,7 +55,7 @@
         latlng: new google.maps.LatLng(lat, lng),
         distance: null,
         search_distance: null,
-        product_lines: _.intersect(['Backyard Boost®', 'DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'], this.get('dealer_types'))
+        product_lines: _.intersect(['Backyard Boost®', 'DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'VitaFerm®', 'Vitalize®'], this.get('dealer_types'))
       });
     },
 
@@ -120,7 +120,7 @@
       model: Dealer,
       url: 'https://biozymebackoffice.com/dealers.js?callback=?',
 
-      product_lines: ['Backyard Boost®', 'DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'Vita Charge®', 'VitaFerm®', 'Vitalize®'],
+      product_lines: ['Backyard Boost®', 'DuraFerm®', 'Gain Smart®', 'Sure Champ®', 'VitaFerm®', 'Vitalize®'],
       bounds: null,
       filter_cache: null,
 
